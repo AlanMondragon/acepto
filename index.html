@@ -93,7 +93,7 @@ var $=function(i){return document.getElementById(i)},cv=$("c"),cx=cv.getContext(
 var cfg={name:"mi vida",date:"2026-07-06",secret:"Eres lo mejor que me ha pasado. Gracias por ser tú, te amo mucho mucho mucho, no tengo palabras para describir cuánto te amo 💖"};
 $("title").textContent="Para ti, "+cfg.name;$("secret").textContent=cfg.secret;
 function size(){W=innerWidth;H=innerHeight;cv.width=W*D;cv.height=H*D;cx.setTransform(D,0,0,D,0,0);buildTargets()}
-var mode="heart",P=[],ptr={x:-999,y:-999},words=["Me encanta tu risa","Contigo todo es mejor","Eres mi lugar favorito","Qué suerte la mía","Te pienso a cada rato","Eres mi persona","Mi parte favorita del día","Te quiero muchísimo"],wi=0,sayT;
+var mode="heart",P=[],ptr={x:-999,y:-999},words=["Me encanta tu risa","Contigo todo es mejor","Eres mi lugar favorito","Qué suerte la mía","Te pienso a cada rato","Eres mi persona","Mi parte favorita del día","Te amo muchísimo"],wi=0,sayT;
 function heartPt(){var t=Math.random()*6.2832,r=Math.sqrt(Math.random());return[16*Math.pow(Math.sin(t),3)*r,(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t))*r]}
 function buildTargets(){var n=W<500?650:1000,sc=Math.min(W*.82,H*.46)/34;if(!P.length)for(var i=0;i<n;i++)P.push({x:Math.random()*W,y:Math.random()*H,vx:0,vy:0,c:["#ff7fab","#ff9fc2","#ffb8d2","#f45d93","#ffd0e1"][i%5],r:Math.random()*2+1.4,h:heartPt()});
 P.forEach(function(p){p.tx=p.h[0]*sc;p.ty=-p.h[1]*sc;p.sc=sc})}

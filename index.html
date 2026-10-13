@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Para ti 💗</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,500&family=DM+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg1:#ffe9f1;--bg2:#ffd0e1;--ink:#6b2a45;--soft:#a5607d;--glass:rgba(255,255,255,.55);--edge:rgba(255,255,255,.8);--deep:#e5719b;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg1:#2b1521;--bg2:#4a2036;--ink:#ffe3ee;--soft:#e7a9c0;--glass:rgba(255,255,255,.1);--edge:rgba(255,255,255,.2)}}
+:root[data-theme="dark"]{--bg1:#2b1521;--bg2:#4a2036;--ink:#ffe3ee;--soft:#e7a9c0;--glass:rgba(255,255,255,.1);--edge:rgba(255,255,255,.2)}
+html,body{height:100%;margin:0}
+*{box-sizing:border-box}
+body{background:linear-gradient(160deg,var(--bg1),var(--bg2));color:var(--ink);font:400 16px/1.5 'DM Sans',system-ui,sans-serif;overflow:hidden;position:relative;-webkit-user-select:none;user-select:none}
+.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;animation:fl 14s ease-in-out infinite alternate}
+.b1{width:60vmax;height:60vmax;background:#ff9fc2;top:-20vmax;left:-15vmax}
+.b2{width:50vmax;height:50vmax;background:#ffc6dc;bottom:-18vmax;right:-12vmax;animation-delay:-6s}
+@keyframes fl{to{transform:translate(8vmax,6vmax) scale(1.15)}}
+canvas#c{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
+header{position:absolute;top:calc(env(safe-area-inset-top,0px) + 22px);left:0;right:0;text-align:center;pointer-events:none}
+h1{font:italic 500 clamp(1.9rem,8vw,3rem)/1.1 Fraunces,Georgia,serif;margin:0}
+#hint{color:var(--soft);margin:6px 0 0;transition:opacity .6s}
+#say{position:absolute;left:0;right:0;bottom:calc(env(safe-area-inset-bottom,0px) + 118px);text-align:center;padding:0 28px;font:italic 500 1.35rem/1.3 Fraunces,serif;min-height:3em;pointer-events:none;transition:opacity .4s}
+#count{position:absolute;left:0;right:0;bottom:calc(env(safe-area-inset-bottom,0px) + 84px);text-align:center;color:var(--soft);font-size:.9rem;pointer-events:none;font-variant-numeric:tabular-nums}
+nav{position:absolute;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom,0px) + 18px);display:flex;gap:6px;padding:6px;background:var(--glass);border:1px solid var(--edge);border-radius:999px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+nav button{border:0;background:none;color:var(--ink);font:600 .95rem 'DM Sans',sans-serif;padding:11px 18px;border-radius:999px;cursor:pointer;transition:background .25s,color .25s}
+nav button.on{background:var(--deep);color:#fff}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--deep);outline-offset:2px}
+#wrap{position:absolute;left:50%;top:46%;width:min(86vw,340px);height:210px;transform:translate(-50%,-50%);display:none;border-radius:28px;overflow:hidden;background:var(--glass);border:1px solid var(--edge);box-shadow:0 20px 60px rgba(229,113,155,.3)}
+#wrap p{position:absolute;inset:0;margin:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font:italic 500 1.3rem/1.35 Fraunces,serif}
+#sc{position:absolute;inset:0;width:100%;height:100%;touch-action:none;transition:opacity .9s}
+#gear{position:absolute;top:calc(env(safe-area-inset-top,0px) + 14px);right:14px;width:40px;height:40px;border-radius:50%;border:1px solid var(--edge);background:var(--glass);color:var(--ink);font-size:1.1rem;cursor:pointer;z-index:5}
+#panel{position:absolute;top:calc(env(safe-area-inset-top,0px) + 60px);right:14px;left:14px;max-width:340px;margin-left:auto;background:var(--glass);border:1px solid var(--edge);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:22px;padding:16px;display:none;z-index:5;-webkit-user-select:auto;user-select:auto}
+#panel label{display:block;font-size:.85rem;color:var(--soft);margin-top:8px}
+#panel input,#panel textarea{width:100%;border:1px solid var(--edge);background:var(--glass);color:var(--ink);border-radius:12px;padding:9px 11px;font:inherit}
+@media (prefers-reduced-motion:reduce){.blob{animation:none}}
+nav button{padding:11px 14px}
+#acta{position:absolute;left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 96px);bottom:calc(env(safe-area-inset-bottom,0px) + 84px);overflow-y:auto;display:none;padding:6px 16px 20px;-webkit-user-select:auto;user-select:auto}
+.paper{max-width:520px;margin:0 auto;background:linear-gradient(160deg,#fffafc,#ffeaf3);color:#5e2540;border:3px double #e5719b;border-radius:6px;padding:26px 22px 22px;text-align:center;box-shadow:0 18px 50px rgba(229,113,155,.35);outline:1px solid #f6b5cc;outline-offset:-10px}
+.paper h2{font:italic 500 clamp(1.7rem,7vw,2.3rem)/1.1 Fraunces,serif;margin:4px 0 2px}
+.fol{font-size:.8rem;color:#a5607d}
+.paper p{margin:12px 0}
+.nm{font:italic 500 1.15rem Fraunces,serif;text-align:center;border:0;border-bottom:1.5px solid #e5719b;background:transparent;color:#5e2540;width:78%;padding:2px;border-radius:0;-webkit-user-select:auto;user-select:auto}
+.paper ul{list-style:none;padding:0;margin:14px auto;max-width:360px;text-align:left;font-size:.95rem}
+.paper li{padding-left:22px;position:relative;margin:6px 0}
+.paper li:before{content:"\2665";position:absolute;left:0;color:#e5719b}
+.sigs{display:flex;gap:14px;margin-top:18px}
+.sigs>div{flex:1}
+.pw{position:relative;height:84px;border-bottom:1.5px solid #5e2540}
+.pw span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#d8a5ba;font-size:.85rem;pointer-events:none}
+.fm{position:absolute;left:50%;bottom:4px;height:76px;transform:translateX(-50%);pointer-events:none}
+.pw canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
+.sigs small{display:block;font-size:.78rem;color:#a5607d;margin-top:4px}
+.seal{width:62px;height:62px;border-radius:50%;margin:16px auto 0;background:radial-gradient(circle at 35% 30%,#ff9fc2,#e5719b 70%);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.7rem;box-shadow:0 3px 8px rgba(229,113,155,.5),inset 0 0 0 4px rgba(255,255,255,.35)}
+.tools{display:flex;gap:10px;justify-content:center;margin:16px auto 0}
+.tools button{border:0;border-radius:999px;padding:12px 20px;font:600 .95rem 'DM Sans',sans-serif;cursor:pointer;background:var(--deep);color:#fff}
+.tools button.alt{background:var(--glass);color:var(--ink);border:1px solid var(--edge)}
+@media print{
+@page{margin:12mm}
+html,body{height:auto!important;overflow:visible!important;background:#fff!important}
+.blob,#c,header,#say,#count,nav,#wrap,.tools{display:none!important}
+#acta{position:static!important;display:block!important;overflow:visible!important;padding:0!important}
+.paper,.paper *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.paper{box-shadow:none!important}
+.pw span{display:none}
+}
+</style>
+</head>
+<body>
+<div class="blob b1"></div><div class="blob b2"></div>
+<canvas id="c"></canvas>
+<header><h1 id="title">Para ti</h1><p id="hint">Toca el corazón, tócalo fuerte</p></header>
+<div id="say"></div><div id="count"></div>
+<div id="wrap"><p id="secret"></p><canvas id="sc"></canvas></div>
+<div id="acta"><div class="paper">
+<div class="fol">Folio 06-07-26</div>
+<h2>Acta de Matrimonio</h2>
+<div class="fol">Oficina del Registro del Cariño</div>
+<p>En la fecha <b id="fecha"></b>, comparecen ante el amor:</p>
+<input class="nm" value="Agata Danitza Salgado Hernandez" aria-label="Nombre de ella">
+<p style="margin:6px 0">y</p>
+<input class="nm" value="Alan Mondragon Quintanar" aria-label="Nombre de él">
+<p>Quienes, siendo novios desde el 6 de julio de 2026, deciden sellar su promesa y se comprometen a:</p>
+<ul><li>Quererse en los días buenos y en los de antojo.</li><li>Abrazarse seguido y sin pretextos.</li><li>Reírse juntos, aunque el chiste sea malo.</li><li>Elegirse cada día, como hasta ahora.</li></ul>
+<div class="sigs"><div><div class="pw"><span>Firma aquí</span><canvas id="p1"></canvas></div><small>Firma de ella</small></div><div><div class="pw"><img class="fm" alt="Firma de Alan" src="data:image/png;base64,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"></div><small>Firma de él</small></div></div>
+<div class="seal">♥</div>
+</div>
+<div class="tools"><button id="prt">Imprimir acta</button><button class="alt" id="clr">Borrar firmas</button></div></div>
+<nav><button class="on" data-m="heart">Corazón</button><button data-m="garden">Jardín</button><button data-m="gift">Sorpresa</button><button data-m="acta">Acta</button></nav>
+<script>
+var $=function(i){return document.getElementById(i)},cv=$("c"),cx=cv.getContext("2d"),W,H,D=Math.min(devicePixelRatio||1,2);
+var cfg={name:"mi vida",date:"2026-07-06",secret:"Eres lo mejor que me ha pasado. Gracias por ser tú, te amo mucho mucho mucho, no tengo palabras para describir cuánto te amo 💖"};
+$("title").textContent="Para ti, "+cfg.name;$("secret").textContent=cfg.secret;
+function size(){W=innerWidth;H=innerHeight;cv.width=W*D;cv.height=H*D;cx.setTransform(D,0,0,D,0,0);buildTargets()}
+var mode="heart",P=[],ptr={x:-999,y:-999},words=["Me encanta tu risa","Contigo todo es mejor","Eres mi lugar favorito","Qué suerte la mía","Te pienso a cada rato","Eres mi persona","Mi parte favorita del día","Te quiero muchísimo"],wi=0,sayT;
+function heartPt(){var t=Math.random()*6.2832,r=Math.sqrt(Math.random());return[16*Math.pow(Math.sin(t),3)*r,(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t))*r]}
+function buildTargets(){var n=W<500?650:1000,sc=Math.min(W*.82,H*.46)/34;if(!P.length)for(var i=0;i<n;i++)P.push({x:Math.random()*W,y:Math.random()*H,vx:0,vy:0,c:["#ff7fab","#ff9fc2","#ffb8d2","#f45d93","#ffd0e1"][i%5],r:Math.random()*2+1.4,h:heartPt()});
+P.forEach(function(p){p.tx=p.h[0]*sc;p.ty=-p.h[1]*sc;p.sc=sc})}
+function say(t){var e=$("say");e.textContent=t;e.style.opacity=1;clearTimeout(sayT);sayT=setTimeout(function(){e.style.opacity=0},2200)}
+function burst(x,y){P.forEach(function(p){var a=Math.atan2(p.y-y,p.x-x)+(Math.random()-.5),f=6+Math.random()*16;p.vx+=Math.cos(a)*f;p.vy+=Math.sin(a)*f});say(words[wi++%words.length]);$("hint").style.opacity=0;if(navigator.vibrate)try{navigator.vibrate(30)}catch(e){}}
+var F=[];
+function plant(x,y){F.push({x:x,y:y,t:performance.now(),n:5+Math.floor(Math.random()*4),s:26+Math.random()*30,h:330+Math.random()*25,l:72+Math.random()*14,rot:Math.random()*6,sw:(Math.random()-.5)*60});$("hint").style.opacity=0}
+function ease(t){var c=1.7;return 1+(c+1)*Math.pow(t-1,3)+c*Math.pow(t-1,2)}
+function drawFlower(f,now){var p=Math.min(1,(now-f.t)/1500),sp=Math.min(1,p*1.6),bp=Math.max(0,(p-.45)/.55),sw=Math.sin(now/900+f.rot)*3;
+var cxp=f.x+f.sw*.5,cyp=(H+f.y)/2;cx.strokeStyle="#9ccfae";cx.lineWidth=2.5;cx.beginPath();cx.moveTo(f.x,H);
+var ex=f.x+(sw)*sp,ey=H-(H-f.y)*sp;cx.quadraticCurveTo(f.x+f.sw*sp,(H+ey)/2,ex,ey);cx.stroke();
+if(bp<=0)return;var e=ease(bp),R=f.s*e;cx.save();cx.translate(ex,ey);cx.rotate(f.rot+sw*.01+bp*.7);
+for(var i=0;i<f.n;i++){cx.save();cx.rotate(i/f.n*6.2832);cx.fillStyle="hsla("+f.h+",85%,"+f.l+"%,.92)";cx.beginPath();cx.ellipse(0,-R*.62,R*.34,R*.62,0,0,6.2832);cx.fill();cx.restore()}
+cx.fillStyle="#ffe19a";cx.beginPath();cx.arc(0,0,R*.28,0,6.2832);cx.fill();cx.restore()}
+function loop(now){cx.clearRect(0,0,W,H);
+if(mode=="heart"){var cxm=W/2,cym=H*.4,beat=1+.035*Math.sin(now/260)*Math.max(0,Math.sin(now/260));
+for(var i=0;i<P.length;i++){var p=P[i],tx=cxm+p.tx*beat,ty=cym+p.ty*beat;p.vx+=(tx-p.x)*.035;p.vy+=(ty-p.y)*.035;
+var dx=p.x-ptr.x,dy=p.y-ptr.y,d=Math.sqrt(dx*dx+dy*dy);if(d<110&&d>0){var f=(1-d/110)*3.2;p.vx+=dx/d*f;p.vy+=dy/d*f}
+p.vx*=.9;p.vy*=.9;p.x+=p.vx;p.y+=p.vy;cx.fillStyle=p.c;cx.beginPath();cx.arc(p.x,p.y,p.r,0,6.2832);cx.fill()}}
+else if(mode=="garden"){for(var j=0;j<F.length;j++)drawFlower(F[j],now)}
+requestAnimationFrame(loop)}
+cv.addEventListener("pointermove",function(e){ptr.x=e.clientX;ptr.y=e.clientY});
+cv.addEventListener("pointerleave",function(){ptr.x=ptr.y=-999});
+cv.addEventListener("pointerdown",function(e){ptr.x=e.clientX;ptr.y=e.clientY;if(mode=="heart")burst(e.clientX,e.clientY);else if(mode=="garden")plant(e.clientX,e.clientY)});
+cv.addEventListener("pointerup",function(e){if(e.pointerType!="mouse")ptr.x=ptr.y=-999});
+var sc=$("sc"),sx=sc.getContext("2d"),down=false,done=false;
+function cover(){var w=sc.width=sc.clientWidth,h=sc.height=sc.clientHeight;sx.globalCompositeOperation="source-over";var g=sx.createLinearGradient(0,0,w,h);g.addColorStop(0,"#ffb3cf");g.addColorStop(.5,"#ff8fb8");g.addColorStop(1,"#ffc4da");sx.fillStyle=g;sx.fillRect(0,0,w,h);
+sx.fillStyle="rgba(255,255,255,.75)";sx.font="italic 500 22px Fraunces,serif";sx.textAlign="center";sx.fillText("Raspa aquí ✨",w/2,h/2+7);sc.style.opacity=1;done=false}
+function scratch(e){if(!down||done)return;var r=sc.getBoundingClientRect();sx.globalCompositeOperation="destination-out";sx.beginPath();sx.arc(e.clientX-r.left,e.clientY-r.top,24,0,6.2832);sx.fill();check()}
+var ck=0;function check(){if(++ck%6)return;var d=sx.getImageData(0,0,sc.width,sc.height).data,c=0;for(var i=3;i<d.length;i+=64)if(d[i]==0)c++;if(c/(d.length/64)>.5){done=true;sc.style.opacity=0;say("💖")}}
+sc.addEventListener("pointerdown",function(e){down=true;sc.setPointerCapture(e.pointerId);scratch(e)});
+sc.addEventListener("pointermove",scratch);sc.addEventListener("pointerup",function(){down=false});
+document.querySelectorAll("nav button").forEach(function(b){b.onclick=function(){document.querySelectorAll("nav button").forEach(function(x){x.className=""});b.className="on";mode=b.dataset.m;
+$("wrap").style.display=mode=="gift"?"block":"none";$("acta").style.display=mode=="acta"?"block":"none";$("count").style.opacity=mode=="acta"?0:1;cv.style.pointerEvents=(mode=="heart"||mode=="garden")?"auto":"none";
+$("hint").style.opacity=1;$("hint").textContent=mode=="heart"?"Toca el corazón, tócalo fuerte":mode=="garden"?"Toca para sembrar flores":mode=="gift"?"Raspa con el dedo":"Firma tu acta de matrimonio";if(mode=="gift")cover();if(mode=="acta")initActa();if(mode=="garden"&&!F.length)plant(W/2,H*.4)}});
+function tick(){var t=Math.max(0,Date.now()-new Date(cfg.date+"T00:00:00").getTime())/1000,p=function(n){return(n<10?"0":"")+n};
+$("count").textContent=Math.floor(t/86400)+" días y "+p(Math.floor(t%86400/3600))+":"+p(Math.floor(t%3600/60))+":"+p(Math.floor(t%60))+" juntos"}
+tick();setInterval(tick,1000);
+var pads=null;
+function pad(id){var c=$(id),g=c.getContext("2d"),dn=false,lx,ly,sp=c.previousElementSibling;
+function sz(){c.width=c.clientWidth*D;c.height=c.clientHeight*D;g.setTransform(D,0,0,D,0,0);g.lineWidth=2.4;g.lineCap="round";g.lineJoin="round";g.strokeStyle="#34306b"}
+function pt(e){var r=c.getBoundingClientRect();return[e.clientX-r.left,e.clientY-r.top]}
+c.addEventListener("pointerdown",function(e){dn=true;c.setPointerCapture(e.pointerId);var q=pt(e);lx=q[0];ly=q[1];sp.style.display="none";g.beginPath();g.moveTo(lx,ly);g.lineTo(lx+.1,ly+.1);g.stroke()});
+c.addEventListener("pointermove",function(e){if(!dn)return;var q=pt(e);g.beginPath();g.moveTo(lx,ly);g.lineTo(q[0],q[1]);g.stroke();lx=q[0];ly=q[1]});
+c.addEventListener("pointerup",function(){dn=false});
+return{sz:sz,clear:function(){g.clearRect(0,0,c.clientWidth,c.clientHeight);sp.style.display="flex"}}}
+function initActa(){$("fecha").textContent=new Date().toLocaleDateString("es-MX",{day:"numeric",month:"long",year:"numeric"});
+if(!pads){pads=[pad("p1")];pads.forEach(function(p){p.sz()})}}
+$("clr").onclick=function(){if(pads)pads.forEach(function(p){p.clear()})};
+$("prt").onclick=function(){window.print()};
+addEventListener("resize",size);size();requestAnimationFrame(loop);
+</script>
+</body>
+</html>
